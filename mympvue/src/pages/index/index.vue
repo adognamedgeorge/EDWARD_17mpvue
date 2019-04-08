@@ -2,25 +2,36 @@
   <div @click="clickHandle">
 
     <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
+      <img class="userinfo-avatar" src="/static/images/title.jpg" />
 
       <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
+        <card :nick="userInfo.nickName" :tel="userInfo.tel" :add="userInfo.address"></card>
       </div>
     </div>
 
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
+    <div class="divAds">
+      <img class="horn" src="/static/images/ads.png" alt="horn">
+
+      <ul>
+        <li>劳动节特惠！全场7折！数量有限！先到先得！</li>
+      </ul>
+    </div>
+
+    <div class="divSearch">
+      <input type="text" placeholder="搜索商品" />
+      <div class="scanWrap">
+        <div class="scanImg">
+          <img src="/static/images/icon_scan.png" alt="scan">
+        </div>
+        <p>扫一扫</p>
       </div>
     </div>
 
-    <form class="form-container">
-      <input type="text" class="form-control" :value="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
+    <!--<form class="form-container">-->
+      <!--<input type="text" class="form-control" :value="motto" placeholder="v-model" />-->
+      <!--<input type="text" class="form-control" v-model="motto" placeholder="v-model" />-->
+      <!--<input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />-->
+    <!--</form>-->
 
     <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
 
@@ -41,7 +52,9 @@ export default {
     return {
       motto: 'Hello miniprograme',
       userInfo: {
-        nickName: 'mpvue',
+        nickName: '杭州格燃食品有限公司',
+        tel: '12345678900',
+        address: '浙江省杭州市西湖区文三路199号',
         avatarUrl: 'http://mpvue.com/assets/logo.png'
       }
     }
@@ -72,26 +85,59 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .userinfo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+  width: rpx(200);
+  height: rpx(200);
+  margin: rpx(50);
+  border-radius: 10%;
 }
 
 .userinfo-nickname {
   color: #aaa;
+  flex: 1;
 }
 
-.usermotto {
-  margin-top: 150px;
+.divAds {
+  color: #ff0000;
+  font-size: .3rem;
+  display: flex;
+  vertical-align: center;
+  flex-direction: row;
+  justify-content: center;
+  .horn {
+    width: rpx(40);
+    height: rpx(40);
+    padding-right: rpx(15);
+  }
+}
+
+.divSearch {
+  display: flex;
+  flex-direction: row;
+  input {
+    display: block;
+    border: 1px solid #ccc;
+    padding: 0 rpx(12);
+    font-size: .3rem;
+    background-image: url("http://mpvue.com/assets/logo.png");
+  }
+  .scanWrap {
+    .scanImg {
+      width: rpx(60);
+      height: rpx(60);
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 }
 
 .form-control {
