@@ -1,6 +1,5 @@
 <template>
   <div @click="clickHandle">
-
     <div class="userinfo" @click="bindViewTap">
       <img class="userinfo-avatar" src="/static/images/title.jpg" />
 
@@ -11,21 +10,14 @@
 
     <div class="divAds">
       <img class="horn" src="/static/images/ads.png" alt="horn">
-
       <ul>
         <li>劳动节特惠！全场7折！数量有限！先到先得！</li>
       </ul>
     </div>
+    <!--搜索框-->
+    <search></search>
+    <category></category>
 
-    <div class="divSearch">
-      <input type="text" placeholder="搜索商品" />
-      <div class="scanWrap">
-        <div class="scanImg">
-          <img src="/static/images/icon_scan.png" alt="scan">
-        </div>
-        <p>扫一扫</p>
-      </div>
-    </div>
 
     <!--<form class="form-container">-->
       <!--<input type="text" class="form-control" :value="motto" placeholder="v-model" />-->
@@ -34,7 +26,6 @@
     <!--</form>-->
 
     <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
-
     <div class="all">
         <div class="left">
         </div>
@@ -46,6 +37,8 @@
 
 <script>
 import card from '@/components/card'
+import search from '@/components/search'
+import category from '@/components/category/category'
 
 export default {
   data () {
@@ -61,7 +54,9 @@ export default {
   },
 
   components: {
-    card
+    card,
+    search,
+    category
   },
 
   methods: {
@@ -90,13 +85,14 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin: rpx(50);
 }
 
 .userinfo-avatar {
   width: rpx(200);
   height: rpx(200);
-  margin: rpx(50);
   border-radius: 10%;
+  margin-right: rpx(40);
 }
 
 .userinfo-nickname {
@@ -115,28 +111,6 @@ export default {
     width: rpx(40);
     height: rpx(40);
     padding-right: rpx(15);
-  }
-}
-
-.divSearch {
-  display: flex;
-  flex-direction: row;
-  input {
-    display: block;
-    border: 1px solid #ccc;
-    padding: 0 rpx(12);
-    font-size: .3rem;
-    background-image: url("http://mpvue.com/assets/logo.png");
-  }
-  .scanWrap {
-    .scanImg {
-      width: rpx(60);
-      height: rpx(60);
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
   }
 }
 
