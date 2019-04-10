@@ -1,17 +1,17 @@
 <template>
   <div id="divList">
     <ul>
-      <li>
+      <li v-for="(item, index) of listData" :key="index">
         <div class="liWrap">
           <div class="liHead">
             <div class="headLf">
-              <img src="/static/images/title.jpg" alt="">
+              <img :src="item.url" alt="">
             </div>
             <div class="headRt">
-              <p>新包装江小白40度80 ml*48瓶</p>
+              <p>{{item.text}}</p>
               <div>
                 <span>
-                  ¥585/箱
+                  ¥{{item.price}}/{{item.unit}}
                 </span>
                 <img src="/static/images/arrow_down.png" alt="">
               </div>
@@ -19,9 +19,9 @@
           </div>
           <div class="liFoot">
             <div class="diVal">
-              <a href="">-</a>
+              <a href="javascript:;">-</a>
               <input type="text" value="5">
-              <a href="">+</a>
+              <a href="javascript:;">+</a>
             </div>
             <button>加入购物车</button>
           </div>
@@ -33,7 +33,28 @@
 
 <script>
 export default {
-  name: 'categoryList'
+  name: 'categoryList',
+  data () {
+    return {
+      listData: []
+    }
+  },
+  methods: {
+    getList () {
+      let Fly = require('flyio')
+      let fly = new Fly()
+      fly.get('https://easy-mock.com/mock/5ca466b55eeed03805bf4949/example/edward')
+        .then((res) => {
+          this.listData = res.data['data']
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  },
+  mounted () {
+    this.getList()
+  }
 }
 </script>
 
@@ -62,6 +83,8 @@ export default {
           flex: 1;
         p {
           font-size: rpx(30);
+          overflow: hidden;
+          max-height: rpx(100);
         }
         div {
           position: relative;
@@ -85,21 +108,37 @@ export default {
       .diVal {
         width: rpx(240);
         height: rpx(80);
-        background-color: red;
         display: flex;
         flex-direction: row;
         a {
           width: rpx(80);
-          height: rpx(80);
-          background: yellow;
+        }
+        a:first-child {
+          border-right: none;
+        }
+        a:last-child {
+          border-left: none;
         }
         input {
-          width: 50px;
+          width: rpx(100);
+        }
+        a, input {
+          text-align: center;
+          height: rpx(80);
+          line-height: rpx(80);
+          border: 1px solid grey;
         }
       }
       button {
         flex: 1;
         float: right;
+        height: rpx(80);
+        line-height: rpx(80);
+        margin-left: rpx(20);
+        background-color: red;
+        text-align: center;
+        color: #ffffff;
+        font-size: rpx(30);
       }
     }
   }
