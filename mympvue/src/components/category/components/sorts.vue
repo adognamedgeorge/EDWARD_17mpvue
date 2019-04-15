@@ -1,6 +1,5 @@
 <template>
   <div id="divList">
-    <h3>全部</h3>
     <ul>
       <li v-for="(item, index) of sortsList" :key="index">{{item.name}}</li>
     </ul>
@@ -37,7 +36,16 @@ export default {
 <style scoped lang="scss">
 #divList {
   ul {
-    background-color: #f5f5f5;
+    li {
+      height: rpx(90);
+      text-align: center;
+      line-height: rpx(90);
+      font-size: .3rem;
+      background-color: #f5f5f5;
+    }
+    li:first-child {
+      background-color: inherit;
+    }
   }
 }
 </style>

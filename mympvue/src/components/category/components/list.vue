@@ -43,9 +43,10 @@ export default {
     getList () {
       let Fly = require('flyio')
       let fly = new Fly()
-      fly.get('https://easy-mock.com/mock/5ca466b55eeed03805bf4949/example/edward')
+      fly.get('https://easy-mock.com/mock/5ca466b55eeed03805bf4949/edward/edward')
         .then((res) => {
           this.listData = res.data['data']
+          console.log(res)
         })
         .catch(err => {
           console.log(err)
@@ -60,6 +61,8 @@ export default {
 
 <style scoped lang="scss">
 #divList {
+  height: rpx(1200);
+  overflow-y: scroll;
   .liWrap {
     display: flex;
     flex-direction: column;
@@ -85,6 +88,7 @@ export default {
           font-size: rpx(30);
           overflow: hidden;
           max-height: rpx(100);
+          line-height: rpx(50);
         }
         div {
           position: relative;

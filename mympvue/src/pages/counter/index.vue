@@ -1,5 +1,6 @@
 <template>
   <div class="counter-warp">
+    <div>counter</div>
     <p>Vuex counter：{{ count }}</p>
     <p>
       <button @click="increment">+</button>

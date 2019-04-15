@@ -26,10 +26,10 @@ export default {
   display: flex;
   flex-direction: row;
   .divSorts {
-    width: 30%;
+    flex: 1;
   }
   .divList {
-    flex: 1;
+    width: 70%;
   }
 }
 </style>
